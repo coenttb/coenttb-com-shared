@@ -28,11 +28,11 @@ public struct Configuration: Sendable {
 extension Configuration {
     public struct Website: Sendable {
         public var baseURL: URL
-        public var router: AnyParserPrinter<URLRequestData, Coenttb_Com_Router.Route>
+        public var router: Coenttb_Com_Router.Route.Router
         
         public init(
             baseURL: URL,
-            router: AnyParserPrinter<URLRequestData, Coenttb_Com_Router.Route>
+            router: Coenttb_Com_Router.Route.Router
         ) {
             self.baseURL = baseURL
             self.router = router
@@ -74,8 +74,7 @@ extension Configuration: DependencyKey {
                 let baseURL = URL(string: "https://coenttb.com")!
                 return .init(
                     baseURL: baseURL,
-                    router: Coenttb_Com_Router.Route.Router()
-                        .baseURL(baseURL.absoluteString).eraseToAnyParserPrinter()
+                    router: Coenttb_Com_Router.Route.Router(baseURL)
                 )
             }(),
             identity: .init(
@@ -98,8 +97,7 @@ extension Configuration: DependencyKey {
                 let baseURL = URL(string: "http://localhost:8080")!
                 return .init(
                     baseURL: baseURL,
-                    router: Coenttb_Com_Router.Route.Router()
-                        .baseURL(baseURL.absoluteString).eraseToAnyParserPrinter()
+                    router: Coenttb_Com_Router.Route.Router(baseURL)
                 )
             }(),
             identity: .init(

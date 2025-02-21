@@ -4,8 +4,12 @@ import Coenttb_Server
 import Identity_Consumer
 
 extension Route {
-    public struct Router: ParserPrinter & Sendable {       
-        package init(){}
+    public struct Router: ParserPrinter & Sendable {
+        let baseURL: URL
+        
+        package init(_ baseURL: URL){
+            self.baseURL = baseURL
+        }
         
         public var body: some URLRouting.Router<Route> {
             OneOf {
@@ -16,7 +20,7 @@ extension Route {
                 URLRouting.Route(.case(Route.public)) {
                     Public.Router()
                 }
-            }
+            }.baseURL(self.baseURL.absoluteString)
         }
         
         public func href(for public: Public) -> String {
