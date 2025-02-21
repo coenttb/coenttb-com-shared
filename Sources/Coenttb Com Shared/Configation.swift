@@ -42,7 +42,7 @@ extension Configuration {
  
 extension Configuration {
     public struct Identity: Sendable {
-        public let provider: Provider
+        public var provider: Provider
         
         public init(provider: Provider) {
             self.provider = provider
@@ -65,54 +65,73 @@ extension Configuration.Identity {
     }
 }
 
-
 extension Configuration: DependencyKey {
-    public static var liveValue: Configuration {
-        
-        return Configuration(
-            website: {
-                let baseURL = URL(string: "https://coenttb.com")!
-                return .init(
-                    baseURL: baseURL,
-                    router: Coenttb_Com_Router.Route.Router(baseURL)
-                )
-            }(),
-            identity: .init(
-                provider: {
-                    let baseURL = URL(string: "https://identity.coenttb.com")!
-                    return .init(
-                        baseURL: baseURL,
-                        router: Identity_Provider.Identity.Provider.API.Router()
-                            .baseURL(baseURL.absoluteString).eraseToAnyParserPrinter()
-                    )
-                }()
-            )
+    public static var liveValue: Self {
+        .init(
+            website: .liveValue,
+            identity: .liveValue
         )
     }
     
-    public static var testValue: Configuration {
-        
-        return Configuration(
-            website: {
-                let baseURL = URL(string: "http://localhost:8080")!
-                return .init(
-                    baseURL: baseURL,
-                    router: Coenttb_Com_Router.Route.Router(baseURL)
-                )
-            }(),
-            identity: .init(
-                provider: {
-                    let baseURL = URL(string: "http://localhost:5001")!
-                    return .init(
-                        baseURL: baseURL,
-                        router: Identity_Provider.Identity.Provider.API.Router()
-                            .baseURL(baseURL.absoluteString).eraseToAnyParserPrinter()
-                    )
-                }()
-            )
+    public static var testValue: Self {
+        .init(
+            website: .testValue,
+            identity: .testValue
         )
     }
 }
+
+extension Configuration.Identity: TestDependencyKey {
+    public static var liveValue: Self {
+        .init(
+            provider: .liveValue
+        )
+    }
+    public static var testValue: Self {
+        .init(
+            provider: .testValue
+        )
+    }
+}
+
+extension Configuration.Website: TestDependencyKey {
+    public static var liveValue: Self {
+        let baseURL = URL(string: "https://coenttb.com")!
+        return .init(
+            baseURL: baseURL,
+            router: Coenttb_Com_Router.Route.Router(baseURL)
+        )
+    }
+    
+    public static var testValue: Self {
+        let baseURL = URL(string: "http://localhost:8080")!
+        return .init(
+            baseURL: baseURL,
+            router: Coenttb_Com_Router.Route.Router(baseURL)
+        )
+    }
+}
+
+extension Configuration.Identity.Provider: DependencyKey {
+    public static var liveValue: Self {
+        let baseURL = URL(string: "https://identity.coenttb.com")!
+        return .init(
+            baseURL: baseURL,
+            router: Identity_Provider.Identity.Provider.API.Router()
+                .baseURL(baseURL.absoluteString).eraseToAnyParserPrinter()
+        )
+    }
+    
+    public static var testValue: Self {
+        let baseURL = URL(string: "http://localhost:5001")!
+        return .init(
+            baseURL: baseURL,
+            router: Identity_Provider.Identity.Provider.API.Router()
+                .baseURL(baseURL.absoluteString).eraseToAnyParserPrinter()
+        )
+    }
+}
+
 
 extension DependencyValues {
     public var coenttb: Configuration  {
