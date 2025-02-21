@@ -5,13 +5,11 @@ import PackageDescription
 
 extension String {
     static let coenttbShared: Self = "Coenttb Com Shared"
-    static let coenttbLegalDocuments: Self = "Coenttb Legal Documents"
     static let coenttbComRouter: Self = "Coenttb Com Router"
 }
    
 extension Target.Dependency {
     static var coenttbShared: Self { .target(name: .coenttbShared) }
-    static var coenttbLegalDocuments: Self { .target(name: .coenttbLegalDocuments) }
     static var coenttbComRouter: Self { .target(name: .coenttbComRouter) }
 }
 
@@ -36,7 +34,6 @@ let package = Package(
     ],
     products: [
         .library(name: .coenttbShared, targets: [.coenttbShared]),
-        .library(name: .coenttbLegalDocuments, targets: [.coenttbLegalDocuments]),
     ],
     dependencies: [
         .package(url: "https://github.com/coenttb/coenttb-server.git", branch: "main"),
@@ -70,12 +67,6 @@ let package = Package(
                 .coenttbSyndication,
                 .coenttbBlog,
                 .coenttbNewsletter,
-            ]
-        ),
-        .target(
-            name: .coenttbLegalDocuments,
-            dependencies: [
-                .coenttbServer
             ]
         ),
     ],
