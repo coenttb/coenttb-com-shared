@@ -69,6 +69,13 @@ let package = Package(
                 .coenttbNewsletter,
             ]
         ),
+        .testTarget(
+            name: .coenttbShared.tests,
+            dependencies: [
+                .coenttbShared,
+                .coenttbComRouter,
+            ]
+        )
     ],
     swiftLanguageModes: [.v6]
 )

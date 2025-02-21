@@ -20,6 +20,12 @@ extension Route {
                 URLRouting.Route(.case(Route.public)) {
                     Public.Router()
                 }
+                URLRouting.Route(.case(Route.api)) {
+                    API.Router()
+                }
+                URLRouting.Route(.case(Route.webhook)) {
+                    Webhook.Router()
+                }
             }.baseURL(self.baseURL.absoluteString)
         }
         
