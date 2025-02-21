@@ -21,8 +21,8 @@ extension Target.Dependency {
     static var dependenciesMacros: Self { .product(name: "DependenciesMacros", package: "swift-dependencies") }
     static var dependenciesTestSupport: Self { .product(name: "DependenciesTestSupport", package: "swift-dependencies") }
     static var issueReporting: Self { .product(name: "IssueReporting", package: "xctest-dynamic-overlay") }
-    static var identityConsumer: Self { .product(name: "Identity Consumer", package: "swift-identity") }
-    static var identityProvider: Self { .product(name: "Identity Provider", package: "swift-identity") }
+    static var identityConsumer: Self { .product(name: "Identity Consumer", package: "swift-identities") }
+    static var identityProvider: Self { .product(name: "Identity Provider", package: "swift-identities") }
     static var coenttbSyndication: Self { .product(name: "Coenttb Syndication", package: "coenttb-syndication") }
     static var coenttbBlog: Self { .product(name: "Coenttb Blog", package: "coenttb-blog") }
     static var coenttbNewsletter: Self { .product(name: "Coenttb Newsletter", package: "coenttb-newsletter") }
@@ -44,7 +44,7 @@ let package = Package(
         .package(url: "https://github.com/coenttb/coenttb-blog.git", branch: "main"),
         .package(url: "https://github.com/coenttb/coenttb-newsletter.git", branch: "main"),
         .package(url: "https://github.com/coenttb/coenttb-syndication.git", branch: "main"),
-        .package(url: "https://github.com/coenttb/swift-identity.git", branch: "main"),
+        .package(url: "https://github.com/coenttb/swift-identities.git", branch: "main"),
         .package(url: "https://github.com/pointfreeco/swift-dependencies.git", from: "1.1.5"),
         .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay", from: "1.4.3"),
     ],
