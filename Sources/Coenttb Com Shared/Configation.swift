@@ -121,7 +121,7 @@ extension DependencyValues {
     }
 }
 
-extension AnyParserPrinter<URLRequestData, Coenttb_Com_Router.Route> {
+extension Coenttb_Com_Router.Route.Router {
     public var identity: AnyParserPrinter<URLRequestData, Identity.Consumer.Route> {
         self.map(
             .convert(
@@ -132,7 +132,7 @@ extension AnyParserPrinter<URLRequestData, Coenttb_Com_Router.Route> {
     }
 }
 
-extension AnyParserPrinter<URLRequestData, Identity.Consumer.Route> {
+extension Identity.Consumer.Route.Router {
     public var view: AnyParserPrinter<URLRequestData, Identity.Consumer.View> {
         self.map(
             .convert(
