@@ -14,6 +14,8 @@ import Languages
 import URLRouting
 import Identity_Consumer
 
+@CasePathable
+@dynamicMemberLookup
 public enum WebsitePage: Codable, Hashable, Sendable {
     case blog(Coenttb_Blog.Route = .index)
     case newsletter(Coenttb_Newsletter.Route)

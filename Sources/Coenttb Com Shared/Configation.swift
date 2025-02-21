@@ -123,29 +123,47 @@ extension DependencyValues {
     }
 }
 
-
 extension AnyParserPrinter<URLRequestData, Coenttb_Com_Router.Route> {
     public var identity: AnyParserPrinter<URLRequestData, Identity.Consumer.Route> {
         self.map(
             .convert(
-                apply: { input in
-                    if case .api(.identity(let identity)) = input {
-                        return .api(identity)
-                    } else if case .website(let page) = input,
-                              case .identity(let view) = page.page {
-                        return .view(view)
-                    }
-                    return nil
-                },
-                unapply: { output in
-                    switch output {
-                    case .api(let identity):
-                        return .api(.identity(identity))
-                    case .view(let view):
-                        return .page(.identity(view))
-                    }
-                }
+                apply: Identity.Consumer.Route.init,
+                unapply: Coenttb_Com_Router.Route.init
             )
         ).eraseToAnyParserPrinter()
+    }
+}
+
+extension AnyParserPrinter<URLRequestData, Identity.Consumer.Route> {
+    public var view: AnyParserPrinter<URLRequestData, Identity.Consumer.View> {
+        self.map(
+            .convert(
+                apply: \.view,
+                unapply: Identity.Consumer.Route.view
+            )
+        ).eraseToAnyParserPrinter()
+    }
+}
+
+extension Identity.Consumer.Route {
+    public init?(
+        _ route: Coenttb_Com_Router.Route
+    ){
+        if let api = route.api?.identity { self = .api(api) }
+        else if let view = route.website?.page.identity { self = .view(view) }
+        else { return nil }
+    }
+}
+
+extension Coenttb_Com_Router.Route {
+    public init(
+        _ route: Identity.Consumer.Route
+    ){
+        switch route {
+        case .api(let identity):
+            self = .api(.identity(identity))
+        case .view(let view):
+            self = .page(.identity(view))
+        }
     }
 }
