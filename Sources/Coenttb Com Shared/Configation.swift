@@ -151,7 +151,7 @@ extension Coenttb_Com_Router.Route.Router {
     }
 }
 
-extension Identity.Consumer.Route.Router {
+extension AnyParserPrinter<URLRequestData, Identity.Consumer.Route> {
     public var view: AnyParserPrinter<URLRequestData, Identity.Consumer.View> {
         self.map(
             .convert(
