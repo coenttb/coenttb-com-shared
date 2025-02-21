@@ -6,19 +6,26 @@ import PackageDescription
 extension String {
     static let coenttbShared: Self = "Coenttb Com Shared"
     static let coenttbLegalDocuments: Self = "Coenttb Legal Documents"
+    static let coenttbComRouter: Self = "Coenttb Com Router"
 }
    
 extension Target.Dependency {
     static var coenttbShared: Self { .target(name: .coenttbShared) }
     static var coenttbLegalDocuments: Self { .target(name: .coenttbLegalDocuments) }
+    static var coenttbComRouter: Self { .target(name: .coenttbComRouter) }
 }
 
 extension Target.Dependency {
-    static var coenttbWeb: Self { .product(name: "Coenttb Web", package: "coenttb-web") }
+    static var coenttbServer: Self { .product(name: "Coenttb Server", package: "coenttb-server") }
     static var coenttbAuthentication: Self { .product(name: "Coenttb Authentication", package: "coenttb-authentication") }
     static var dependenciesMacros: Self { .product(name: "DependenciesMacros", package: "swift-dependencies") }
     static var dependenciesTestSupport: Self { .product(name: "DependenciesTestSupport", package: "swift-dependencies") }
     static var issueReporting: Self { .product(name: "IssueReporting", package: "xctest-dynamic-overlay") }
+    static var identityConsumer: Self { .product(name: "Identity Consumer", package: "swift-identity") }
+    static var identityProvider: Self { .product(name: "Identity Provider", package: "swift-identity") }
+    static var coenttbSyndication: Self { .product(name: "Coenttb Syndication", package: "coenttb-syndication") }
+    static var coenttbBlog: Self { .product(name: "Coenttb Blog", package: "coenttb-blog") }
+    static var coenttbNewsletter: Self { .product(name: "Coenttb Newsletter", package: "coenttb-newsletter") }
 }
 
 let package = Package(
@@ -32,8 +39,12 @@ let package = Package(
         .library(name: .coenttbLegalDocuments, targets: [.coenttbLegalDocuments]),
     ],
     dependencies: [
-        .package(url: "https://github.com/coenttb/coenttb-web.git", branch: "main"),
+        .package(url: "https://github.com/coenttb/coenttb-server.git", branch: "main"),
         .package(url: "https://github.com/coenttb/coenttb-authentication.git", branch: "main"),
+        .package(url: "https://github.com/coenttb/coenttb-blog.git", branch: "main"),
+        .package(url: "https://github.com/coenttb/coenttb-newsletter.git", branch: "main"),
+        .package(url: "https://github.com/coenttb/coenttb-syndication.git", branch: "main"),
+        .package(url: "https://github.com/coenttb/swift-identity.git", branch: "main"),
         .package(url: "https://github.com/pointfreeco/swift-dependencies.git", from: "1.1.5"),
         .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay", from: "1.4.3"),
     ],
@@ -41,15 +52,30 @@ let package = Package(
         .target(
             name: .coenttbShared,
             dependencies: [
-                .coenttbWeb,
+                .coenttbServer,
                 .issueReporting,
                 .coenttbAuthentication,
+                .coenttbComRouter,
+                .identityConsumer,
+                .identityProvider,
+            ]
+        ),
+        .target(
+            name: .coenttbComRouter,
+            dependencies: [
+                .coenttbServer,
+                .issueReporting,
+                .coenttbAuthentication,
+                .identityConsumer,
+                .coenttbSyndication,
+                .coenttbBlog,
+                .coenttbNewsletter,
             ]
         ),
         .target(
             name: .coenttbLegalDocuments,
             dependencies: [
-                .coenttbWeb
+                .coenttbServer
             ]
         ),
     ],
