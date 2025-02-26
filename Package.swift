@@ -19,8 +19,7 @@ extension Target.Dependency {
     static var dependenciesMacros: Self { .product(name: "DependenciesMacros", package: "swift-dependencies") }
     static var dependenciesTestSupport: Self { .product(name: "DependenciesTestSupport", package: "swift-dependencies") }
     static var issueReporting: Self { .product(name: "IssueReporting", package: "xctest-dynamic-overlay") }
-    static var identityConsumer: Self { .product(name: "Identity Consumer", package: "swift-identities") }
-    static var identityProvider: Self { .product(name: "Identity Provider", package: "swift-identities") }
+    static var identities: Self { .product(name: "Identities", package: "swift-identities") }
     static var coenttbSyndication: Self { .product(name: "Coenttb Syndication", package: "coenttb-syndication") }
     static var coenttbBlog: Self { .product(name: "Coenttb Blog", package: "coenttb-blog") }
     static var coenttbNewsletter: Self { .product(name: "Coenttb Newsletter", package: "coenttb-newsletter") }
@@ -53,8 +52,7 @@ let package = Package(
                 .issueReporting,
                 .coenttbAuthentication,
                 .coenttbComRouter,
-                .identityConsumer,
-                .identityProvider,
+                .identities,
             ]
         ),
         .target(
@@ -63,7 +61,7 @@ let package = Package(
                 .coenttbServer,
                 .issueReporting,
                 .coenttbAuthentication,
-                .identityConsumer,
+                .identities,
                 .coenttbSyndication,
                 .coenttbBlog,
                 .coenttbNewsletter,
