@@ -6,12 +6,12 @@
 //
 
 import CasePaths
-import Identity_Consumer
+import Identities
 import Dependencies
 import Foundation
 import Languages
 import URLRouting
-import Identity_Consumer
+import Identities
 
 extension WebsitePage {
     @CasePathable

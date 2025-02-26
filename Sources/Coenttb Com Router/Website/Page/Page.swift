@@ -12,7 +12,7 @@ import Dependencies
 import Foundation
 import Languages
 import URLRouting
-import Identity_Consumer
+import Identities
 
 @CasePathable
 @dynamicMemberLookup
@@ -26,7 +26,7 @@ public enum WebsitePage: Codable, Hashable, Sendable {
     case terms_of_use
     case general_terms_and_conditions
     case account(WebsitePage.Account)
-    case identity(Identity.Consumer.View)
+    case identity(Identity.View)
 }
 
 extension WebsitePage {
@@ -78,7 +78,7 @@ extension WebsitePage {
                 }
                 
                 URLRouting.Route(.case(WebsitePage.identity)) {
-                    Identity.Consumer.View.Router()
+                    Identity.View.Router()
                 }
 
                 URLRouting.Route(.case(WebsitePage.home))

@@ -7,7 +7,7 @@
 
 import Foundation
 import CasePaths
-import Identity_Consumer
+import Identities
 import Coenttb_Server
 
 @CasePathable

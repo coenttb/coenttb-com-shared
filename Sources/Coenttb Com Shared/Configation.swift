@@ -9,8 +9,7 @@ import Foundation
 import Dependencies
 import SwiftWeb
 import Coenttb_Com_Router
-import Identity_Consumer
-import Identity_Provider
+import Identities
 
 public struct Configuration: Sendable {
     public var website: Configuration.Website
@@ -53,11 +52,11 @@ extension Configuration {
 extension Configuration.Identity {
     public struct Provider: Sendable {
         public var baseURL: URL
-        public var router: AnyParserPrinter<URLRequestData, Identity_Provider.Identity.Provider.API>
+        public var router: AnyParserPrinter<URLRequestData, Identity.API>
         
         public init(
             baseURL: URL,
-            router: AnyParserPrinter<URLRequestData, Identity_Provider.Identity.Provider.API>
+            router: AnyParserPrinter<URLRequestData, Identity.API>
         ) {
             self.baseURL = baseURL
             self.router = router
@@ -117,7 +116,7 @@ extension Configuration.Identity.Provider: DependencyKey {
         let baseURL = URL(string: "https://identity.coenttb.com")!
         return .init(
             baseURL: baseURL,
-            router: Identity_Provider.Identity.Provider.API.Router()
+            router: Identity.API.Router()
                 .baseURL(baseURL.absoluteString).eraseToAnyParserPrinter()
         )
     }
@@ -126,7 +125,7 @@ extension Configuration.Identity.Provider: DependencyKey {
         let baseURL = URL(string: "http://localhost:5001")!
         return .init(
             baseURL: baseURL,
-            router: Identity_Provider.Identity.Provider.API.Router()
+            router: Identity.API.Router()
                 .baseURL(baseURL.absoluteString).eraseToAnyParserPrinter()
         )
     }
@@ -141,28 +140,28 @@ extension DependencyValues {
 }
 
 extension Coenttb_Com_Router.Route.Router {
-    public var identity: AnyParserPrinter<URLRequestData, Identity.Consumer.Route> {
+    public var identity: AnyParserPrinter<URLRequestData, Identity.Route> {
         self.map(
             .convert(
-                apply: Identity.Consumer.Route.init,
+                apply: Identity.Route.init,
                 unapply: Coenttb_Com_Router.Route.init
             )
         ).eraseToAnyParserPrinter()
     }
 }
 
-extension AnyParserPrinter<URLRequestData, Identity.Consumer.Route> {
-    public var view: AnyParserPrinter<URLRequestData, Identity.Consumer.View> {
+extension AnyParserPrinter<URLRequestData, Identity.Route> {
+    public var view: AnyParserPrinter<URLRequestData, Identity.View> {
         self.map(
             .convert(
                 apply: \.view,
-                unapply: Identity.Consumer.Route.view
+                unapply: Identity.Route.view
             )
         ).eraseToAnyParserPrinter()
     }
 }
 
-extension Identity.Consumer.Route {
+extension Identity.Route {
     public init?(
         _ route: Coenttb_Com_Router.Route
     ){
@@ -174,7 +173,7 @@ extension Identity.Consumer.Route {
 
 extension Coenttb_Com_Router.Route {
     public init(
-        _ route: Identity.Consumer.Route
+        _ route: Identity.Route
     ){
         switch route {
         case .api(let identity):

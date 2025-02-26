@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Identity_Consumer
+import Identities
 import SwiftWeb
 import Coenttb_Syndication
 import Coenttb_Newsletter
@@ -16,7 +16,7 @@ extension Route {
     @CasePathable
     @dynamicMemberLookup
     public enum API: Equatable, Sendable {
-        case identity(Identity.Consumer.API)
+        case identity(Identity.API)
         case syndication(Coenttb_Syndication.API)
         case newsletter(Coenttb_Newsletter.API)
     }
@@ -30,7 +30,7 @@ extension Route.API {
         public var body: some URLRouting.Router<Route.API> {
             OneOf {
                 URLRouting.Route(.case(Route.API.identity)) {
-                    Identity.Consumer.API.Router()
+                    Identity.API.Router()
                 }
                 
                 URLRouting.Route(.case(Route.API.syndication)) {

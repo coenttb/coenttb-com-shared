@@ -1,7 +1,7 @@
 import Foundation
 import Dependencies
 import Coenttb_Server
-import Identity_Consumer
+import Identities
 
 extension Route {
     public struct Router: ParserPrinter & Sendable {
