@@ -18,7 +18,7 @@ import Identities
 @dynamicMemberLookup
 public enum WebsitePage: Codable, Hashable, Sendable {
     case blog(Coenttb_Blog.Route = .index)
-    case newsletter(Coenttb_Newsletter.Route)
+    case newsletter(Coenttb_Newsletter.View)
     case choose_country_region
     case contact
     case home
@@ -31,8 +31,6 @@ public enum WebsitePage: Codable, Hashable, Sendable {
 
 extension WebsitePage {
     public struct Router: ParserPrinter, Sendable {
-
-        public static var shared: Self { .init() }
 
         public init() {}
 
@@ -50,7 +48,7 @@ extension WebsitePage {
 
                 URLRouting.Route(.case(WebsitePage.newsletter)) {
                     Path { String.newsletter.slug() }
-                    Coenttb_Newsletter.Route.Router()
+                    Coenttb_Newsletter.View.Router()
                 }
 
                 URLRouting.Route(.case(WebsitePage.choose_country_region)) {
