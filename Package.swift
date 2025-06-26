@@ -32,7 +32,14 @@ let package = Package(
         .iOS(.v17)
     ],
     products: [
-        .library(name: .coenttbShared, targets: [.coenttbShared]),
+        .library(
+            name: .coenttbShared,
+            targets: [.coenttbShared]
+        ),
+        .library(
+            name: .coenttbComRouter,
+            targets: [.coenttbComRouter]
+        ),
     ],
     dependencies: [
         .package(url: "https://github.com/coenttb/coenttb-server.git", branch: "main"),
