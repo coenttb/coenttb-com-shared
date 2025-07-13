@@ -46,16 +46,23 @@ extension WebsitePage {
                     Coenttb_Blog.Route.Router()
                 }
                 
-                // Convenience to support /newsletter/subscribe rather than just /newsletter/subscribe/request
-                URLRouting.Route(.case(WebsitePage.newsletter(.subscribe(.request)))) {
-                    Path { String.newsletter.slug() + "/subscribe" }
+
+                OneOf {
+                    // Convenience route FIRST (more specific) - handles /newsletter/subscribe
+                    URLRouting.Route(.case(WebsitePage.newsletter(.subscribe(.request)))) {
+                        Path {
+                            String.newsletter.slug()
+                            "subscribe"
+                        }
+                    }
+                    
+                    URLRouting.Route(.case(WebsitePage.newsletter)) {
+                        Path { String.newsletter.slug() }
+                        Coenttb_Newsletter.View.Router()
+                    }
+                    
                 }
                 
-                URLRouting.Route(.case(WebsitePage.newsletter)) {
-                    Path { String.newsletter.slug() }
-                    Coenttb_Newsletter.View.Router()
-                }
-                               
                 URLRouting.Route(.case(WebsitePage.choose_country_region)) {
                     Path { String.choose_country_region.slug() }
                 }
