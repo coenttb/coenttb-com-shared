@@ -18,7 +18,7 @@ extension Route {
     @CasePathable
     @dynamicMemberLookup
     public enum Website: Codable, Hashable, Sendable {
-        case blog(Coenttb_Blog.Route = .index)
+        case blog(Blog.Route.View = .index)
         case newsletter(Newsletter.Route.View)
         case choose_country_region
         case contact
@@ -46,7 +46,7 @@ extension Route.Website {
                 
                 URLRouting.Route(.case(Route.Website.blog)) {
                     Path { String.blog.slug() }
-                    Coenttb_Blog.Route.Router()
+                    Blog.Route.View.Router()
                 }
                 
 
