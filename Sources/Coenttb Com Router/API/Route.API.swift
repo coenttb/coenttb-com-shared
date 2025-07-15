@@ -18,7 +18,7 @@ extension Route {
     public enum API: Equatable, Sendable {
         case identity(Identity.API)
         case syndication(Coenttb_Syndication.API)
-        case newsletter(Coenttb_Newsletter.API)
+        case newsletter(Newsletter.Route.API)
     }
 }
 
@@ -38,7 +38,7 @@ extension Route.API {
                 }
                 
                 URLRouting.Route(.case(Route.API.newsletter)) {
-                    Coenttb_Newsletter.API.Router()
+                    Newsletter.Route.API.Router()
                 }
             }
         }
