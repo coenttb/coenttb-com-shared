@@ -11,17 +11,17 @@ import Foundation
 import Languages
 @preconcurrency import URLRouting
 
-extension Public {
+extension Route.Public {
     public enum WellKnown: Equatable, Sendable {
         case apple_developer_merchantid_domain_association
     }
 }
 
-extension Public.WellKnown {
+extension Route.Public.WellKnown {
     public struct Router: ParserPrinter, Sendable {
-        public var body: some URLRouting.Router<Public.WellKnown> {
+        public var body: some URLRouting.Router<Route.Public.WellKnown> {
             OneOf {
-                URLRouting.Route(.case(Public.WellKnown.apple_developer_merchantid_domain_association)) {
+                URLRouting.Route(.case(Route.Public.WellKnown.apple_developer_merchantid_domain_association)) {
                     Path.apple_developer_merchantid_domain_association
                 }
             }

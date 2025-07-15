@@ -14,7 +14,7 @@ extension Route {
         public var body: some URLRouting.Router<Route> {
             OneOf {
                 URLRouting.Route(.case(Route.website)) {
-                    Website.Router.init(pageRouter: WebsitePage.Router())
+                    Coenttb_Server.Website.Router.init(pageRouter: Route.Website.Router())
                 }
 
                 URLRouting.Route(.case(Route.public)) {
@@ -29,24 +29,24 @@ extension Route {
             }.baseURL(self.baseURL.absoluteString)
         }
         
-        public func href(for public: Public) -> String {
+        public func href(for public: Route.Public) -> String {
             self.url(for: .public(`public`)).relativePath
         }
 
-        public func href(for website: Website<WebsitePage>) -> String {
+        public func href(for website: Coenttb_Server.Website<Website>) -> String {
             self.url(for: website).relativePath
         }
 
-        public func url(for page: Website<WebsitePage>) -> URL {
+        public func url(for page: Coenttb_Server.Website<Website>) -> URL {
             return self.url(for: .website(page))
         }
         
-        public func url(for page: WebsitePage) -> URL {
+        public func url(for page: Route.Website) -> URL {
             @Dependency(\.language) var language
             return self.url(for: .website(.init(language: language, page: page)))
         }
         
-        public func href(for page: WebsitePage) -> String {
+        public func href(for page: Route.Website) -> String {
             @Dependency(\.language) var language
             return self.url(for: .website(.init(language: language, page: page))).relativePath
         }

@@ -13,46 +13,47 @@ import Languages
 import URLRouting
 import Identities
 
-extension WebsitePage {
+
+extension Route.Website {
     @CasePathable
     public enum Account: Codable, Hashable, Sendable {
         case index
-        case settings(WebsitePage.Account.Settings)
+        case settings(Route.Website.Account.Settings)
     }
 }
 
-extension WebsitePage.Account {
+extension Route.Website.Account {
     struct Router: ParserPrinter {
-        var body: some URLRouting.Router<WebsitePage.Account> {
+        var body: some URLRouting.Router<Route.Website.Account> {
             OneOf {
 
-                URLRouting.Route(.case(WebsitePage.Account.settings)) {
+                URLRouting.Route(.case(Route.Website.Account.settings)) {
                     Path { "settings" }
-                    WebsitePage.Account.Settings.Router()
+                    Route.Website.Account.Settings.Router()
                 }
 
-                URLRouting.Route(.case(WebsitePage.Account.index))
+                URLRouting.Route(.case(Route.Website.Account.index))
             }
         }
     }
 }
 
-extension WebsitePage.Account {
+extension Route.Website.Account {
     public enum Settings: Codable, Hashable, Sendable {
         case index
         case profile
     }
 }
 
-extension WebsitePage.Account.Settings {
+extension Route.Website.Account.Settings {
     struct Router: ParserPrinter {
-        var body: some URLRouting.Router<WebsitePage.Account.Settings> {
+        var body: some URLRouting.Router<Route.Website.Account.Settings> {
             OneOf {
-                URLRouting.Route(.case(WebsitePage.Account.Settings.index)) {
+                URLRouting.Route(.case(Route.Website.Account.Settings.index)) {
                     Path { "index" }
                 }
 
-                URLRouting.Route(.case(WebsitePage.Account.Settings.profile)) {
+                URLRouting.Route(.case(Route.Website.Account.Settings.profile)) {
                     Path { "profile" }
                 }
             }

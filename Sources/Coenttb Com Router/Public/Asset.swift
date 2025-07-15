@@ -12,38 +12,38 @@ import Foundation
 import Languages
 import URLRouting
 
-extension Public {
+extension Route.Public {
     public enum Asset: Equatable, Sendable {
         case favicon(FaviconRouter.Route)
-        case image(Public.Asset.Image)
-        case logo(Public.Asset.Logo)
+        case image(Route.Public.Asset.Image)
+        case logo(Route.Public.Asset.Logo)
     }
 }
 
-extension Public.Asset {
+extension Route.Public.Asset {
     public struct Router: ParserPrinter, Sendable {
-        public var body: some URLRouting.Router<Public.Asset> {
+        public var body: some URLRouting.Router<Route.Public.Asset> {
             OneOf {
-                URLRouting.Route(.case(Public.Asset.favicon)) {
+                URLRouting.Route(.case(Route.Public.Asset.favicon)) {
                     Path.favicon
                     FaviconRouter()
                 }
 
-                URLRouting.Route(.case(Public.Asset.image)) {
+                URLRouting.Route(.case(Route.Public.Asset.image)) {
                     Path.image
-                    Public.Asset.Image.Router()
+                    Route.Public.Asset.Image.Router()
                 }
 
-                URLRouting.Route(.case(Public.Asset.logo)) {
+                URLRouting.Route(.case(Route.Public.Asset.logo)) {
                     Path.logo
-                    Public.Asset.Logo.Router()
+                    Route.Public.Asset.Logo.Router()
                 }
             }
         }
     }
 }
 
-extension Public.Asset {
+extension Route.Public.Asset {
     public enum Logo: String, Codable, Hashable, Sendable {
         case svg = "logo.svg"
         case white = "logo_light.svg"
@@ -53,36 +53,36 @@ extension Public.Asset {
     }
 }
 
-extension Public.Asset.Logo {
+extension Route.Public.Asset.Logo {
     public struct Router: ParserPrinter {
-        public var body: some URLRouting.Router<Public.Asset.Logo> {
+        public var body: some URLRouting.Router<Route.Public.Asset.Logo> {
             OneOf {
 
-                URLRouting.Route(.case(Public.Asset.Logo.favicon_light)) {
-                    Path { Public.Asset.Logo.favicon_light.rawValue }
+                URLRouting.Route(.case(Route.Public.Asset.Logo.favicon_light)) {
+                    Path { Route.Public.Asset.Logo.favicon_light.rawValue }
                 }
 
-                URLRouting.Route(.case(Public.Asset.Logo.favicon_dark)) {
-                    Path { Public.Asset.Logo.favicon_dark.rawValue }
+                URLRouting.Route(.case(Route.Public.Asset.Logo.favicon_dark)) {
+                    Path { Route.Public.Asset.Logo.favicon_dark.rawValue }
                 }
 
-                URLRouting.Route(.case(Public.Asset.Logo.svg)) {
-                    Path { Public.Asset.Logo.svg.rawValue }
+                URLRouting.Route(.case(Route.Public.Asset.Logo.svg)) {
+                    Path { Route.Public.Asset.Logo.svg.rawValue }
                 }
 
-                URLRouting.Route(.case(Public.Asset.Logo.white)) {
-                    Path { Public.Asset.Logo.white.rawValue }
+                URLRouting.Route(.case(Route.Public.Asset.Logo.white)) {
+                    Path { Route.Public.Asset.Logo.white.rawValue }
                 }
 
-                URLRouting.Route(.case(Public.Asset.Logo.muted)) {
-                    Path { Public.Asset.Logo.muted.rawValue }
+                URLRouting.Route(.case(Route.Public.Asset.Logo.muted)) {
+                    Path { Route.Public.Asset.Logo.muted.rawValue }
                 }
             }
         }
     }
 }
 
-extension Public.Asset {
+extension Route.Public.Asset {
     public struct Image: Codable, Hashable, RawRepresentable, ExpressibleByStringLiteral, Sendable {
 
         public let rawValue: String
@@ -97,11 +97,11 @@ extension Public.Asset {
     }
 }
 
-extension Public.Asset.Image {
+extension Route.Public.Asset.Image {
     public struct Router: ParserPrinter {
-        public var body: some URLRouting.Router<Public.Asset.Image> {
+        public var body: some URLRouting.Router<Route.Public.Asset.Image> {
 
-            Path { Parse(.string.representing(Public.Asset.Image.self)) }
+            Path { Parse(.string.representing(Route.Public.Asset.Image.self)) }
         }
     }
 }

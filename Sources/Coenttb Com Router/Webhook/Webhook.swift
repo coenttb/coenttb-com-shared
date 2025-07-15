@@ -13,21 +13,24 @@ import Languages
 import Prelude
 import URLRouting
 
-public enum Webhook: Equatable, Sendable {
-    case mailgun
-//    case stripe
+extension Route {
+    public enum Webhook: Equatable, Sendable {
+        case mailgun
+    //    case stripe
+    }
 }
 
-extension Webhook {
+
+extension Route.Webhook {
     public struct Router: ParserPrinter, Sendable {
-        public var body: some URLRouting.Router<Webhook> {
+        public var body: some URLRouting.Router<Route.Webhook> {
             OneOf {
-                URLRouting.Route(.case(Webhook.mailgun)) {
+                URLRouting.Route(.case(Route.Webhook.mailgun)) {
                     Method.post
                     Path { "mailgun" }
                 }
 
-//                URLRouting.Route(.case(Webhook.stripe)) {
+//                URLRouting.Route(.case(Route.Webhook.stripe)) {
 //                    Method.post
 //                    Path { "stripe" }
 //                }

@@ -12,40 +12,43 @@ import Foundation
 import Languages
 import URLRouting
 
-public enum Public: Equatable, Sendable {
-    case asset(Public.Asset)
-    case wellKnown(Public.WellKnown)
-    case robots
-    case sitemap
-    case rssXml
-    case favicon(FaviconRouter.Route)
+extension Route {
+    public enum Public: Equatable, Sendable {
+        case asset(Public.Asset)
+        case wellKnown(Route.Public.WellKnown)
+        case robots
+        case sitemap
+        case rssXml
+        case favicon(FaviconRouter.Route)
+    }
 }
 
-extension Public {
+
+extension Route.Public {
     public struct Router: ParserPrinter, Sendable {
 
         public static let shared: Self = .init()
 
-        public var body: some URLRouting.Router<Public> {
+        public var body: some URLRouting.Router<Route.Public> {
             OneOf {
-                URLRouting.Route(.case(Public.asset)) {
+                URLRouting.Route(.case(Route.Public.asset)) {
                     Path.assets
-                    Public.Asset.Router()
+                    Route.Public.Asset.Router()
                 }
-                URLRouting.Route(.case(Public.rssXml)) {
+                URLRouting.Route(.case(Route.Public.rssXml)) {
                     Path.rssXml
                 }
-                URLRouting.Route(.case(Public.wellKnown)) {
+                URLRouting.Route(.case(Route.Public.wellKnown)) {
                     Path.well_known
-                    Public.WellKnown.Router()
+                    Route.Public.WellKnown.Router()
                 }
-                URLRouting.Route(.case(Public.robots)) {
+                URLRouting.Route(.case(Route.Public.robots)) {
                     Path.robotsTxt
                 }
-                URLRouting.Route(.case(Public.sitemap)) {
+                URLRouting.Route(.case(Route.Public.sitemap)) {
                     Path.sitemapXml
                 }
-                URLRouting.Route(.case(Public.favicon)) {
+                URLRouting.Route(.case(Route.Public.favicon)) {
                     FaviconRouter()
                 }
             }
