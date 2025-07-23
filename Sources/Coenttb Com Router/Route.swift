@@ -9,6 +9,7 @@ import Foundation
 import CasePaths
 import Identities
 import Coenttb_Server
+import Languages
 
 @CasePathable
 @dynamicMemberLookup
