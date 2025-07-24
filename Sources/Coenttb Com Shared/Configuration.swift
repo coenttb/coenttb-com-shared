@@ -5,16 +5,16 @@
 //  Created by Coen ten Thije Boonkkamp on 24/01/2025.
 //
 
-import Foundation
-import Dependencies
-import SwiftWeb
 import Coenttb_Com_Router
+import Dependencies
+import Foundation
 import Identities
+import SwiftWeb
 
 public struct Configuration: Sendable {
     public var website: Configuration.Website
     public var identity: Configuration.Identity
-    
+
     public init(
         website: Website,
         identity: Identity
@@ -28,7 +28,7 @@ extension Configuration {
     public struct Website: Sendable {
         public var baseURL: URL
         public var router: Coenttb_Com_Router.Route.Router
-        
+
         public init(
             baseURL: URL,
             router: Coenttb_Com_Router.Route.Router
@@ -38,11 +38,11 @@ extension Configuration {
         }
     }
 }
- 
+
 extension Configuration {
     public struct Identity: Sendable {
         public var provider: Provider
-        
+
         public init(provider: Provider) {
             self.provider = provider
         }
@@ -53,7 +53,7 @@ extension Configuration.Identity {
     public struct Provider: Sendable {
         public var baseURL: URL
         public var router: AnyParserPrinter<URLRequestData, Identity.API>
-        
+
         public init(
             baseURL: URL,
             router: AnyParserPrinter<URLRequestData, Identity.API>
@@ -71,7 +71,7 @@ extension Configuration: DependencyKey {
             identity: .liveValue
         )
     }
-    
+
     public static var testValue: Self {
         .init(
             website: .testValue,
@@ -101,7 +101,7 @@ extension Configuration.Website: TestDependencyKey {
             router: Coenttb_Com_Router.Route.Router(baseURL)
         )
     }
-    
+
     public static var testValue: Self {
         let baseURL = URL(string: "http://localhost:8080")!
         return .init(
@@ -120,7 +120,7 @@ extension Configuration.Identity.Provider: DependencyKey {
                 .baseURL(baseURL.absoluteString).eraseToAnyParserPrinter()
         )
     }
-    
+
     public static var testValue: Self {
         let baseURL = URL(string: "http://localhost:5001")!
         return .init(
@@ -131,9 +131,8 @@ extension Configuration.Identity.Provider: DependencyKey {
     }
 }
 
-
 extension DependencyValues {
-    public var coenttb: Configuration  {
+    public var coenttb: Configuration {
         get { self[Configuration.self] }
         set { self[Configuration.self] = newValue }
     }
@@ -164,17 +163,15 @@ extension AnyParserPrinter<URLRequestData, Identity.Route> {
 extension Identity.Route {
     public init?(
         _ route: Coenttb_Com_Router.Route
-    ){
-        if let api = route.api?.identity { self = .api(api) }
-        else if let view = route.website?.page.identity { self = .view(view) }
-        else { return nil }
+    ) {
+        if let api = route.api?.identity { self = .api(api) } else if let view = route.website?.page.identity { self = .view(view) } else { return nil }
     }
 }
 
 extension Coenttb_Com_Router.Route {
     public init(
         _ route: Identity.Route
-    ){
+    ) {
         switch route {
         case .api(let identity):
             self = .api(.identity(identity))

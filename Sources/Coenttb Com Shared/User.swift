@@ -42,7 +42,7 @@ public struct User: Codable, Hashable, Sendable, Identifiable {
         self.newsletterSubscribed = newsletterSubscribed
         self.stripe = stripe
     }
-    
+
     public enum CodingKeys: String, CodingKey {
         case id
         case email
@@ -82,8 +82,6 @@ public struct User: Codable, Hashable, Sendable, Identifiable {
         }
     }
 }
-
-
 
 extension User {
     public var accessToBlog: Bool {

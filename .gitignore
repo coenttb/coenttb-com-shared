@@ -64,3 +64,5 @@ github_token.txt
 # Exclude specific env file
 !.env.example
 .env-development
+.claude
+CLAUDE.md

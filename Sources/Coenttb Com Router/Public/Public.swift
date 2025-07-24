@@ -9,7 +9,7 @@ import CasePaths
 import Dependencies
 @preconcurrency import Favicon
 import Foundation
-import Languages
+import Translating
 import URLRouting
 
 extension Route {
@@ -22,7 +22,6 @@ extension Route {
         case favicon(FaviconRouter.Route)
     }
 }
-
 
 extension Route.Public {
     public struct Router: ParserPrinter, Sendable {

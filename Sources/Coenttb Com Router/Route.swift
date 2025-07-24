@@ -5,11 +5,11 @@
 //  Created by Coen ten Thije Boonkkamp on 10/08/2022.
 //
 
-import Foundation
 import CasePaths
-import Identities
 import Coenttb_Server
-import Languages
+import Foundation
+import Identities
+import Translating
 
 @CasePathable
 @dynamicMemberLookup

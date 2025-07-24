@@ -1,16 +1,16 @@
-import Foundation
-import Dependencies
 import Coenttb_Server
+import Dependencies
+import Foundation
 import Identities
 
 extension Route {
     public struct Router: ParserPrinter & Sendable {
         let baseURL: URL
-        
-        package init(_ baseURL: URL){
+
+        package init(_ baseURL: URL) {
             self.baseURL = baseURL
         }
-        
+
         public var body: some URLRouting.Router<Route> {
             OneOf {
                 URLRouting.Route(.case(Route.website)) {
@@ -28,7 +28,7 @@ extension Route {
                 }
             }.baseURL(self.baseURL.absoluteString)
         }
-        
+
         public func href(for public: Route.Public) -> String {
             self.url(for: .public(`public`)).relativePath
         }
@@ -40,12 +40,12 @@ extension Route {
         public func url(for page: Coenttb_Server.Website<Website>) -> URL {
             return self.url(for: .website(page))
         }
-        
+
         public func url(for page: Route.Website) -> URL {
             @Dependency(\.language) var language
             return self.url(for: .website(.init(language: language, page: page)))
         }
-        
+
         public func href(for page: Route.Website) -> String {
             @Dependency(\.language) var language
             return self.url(for: .website(.init(language: language, page: page))).relativePath

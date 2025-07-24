@@ -8,7 +8,7 @@
 import CasePaths
 import Dependencies
 import Foundation
-import Languages
+import Translating
 @preconcurrency import URLRouting
 
 extension Route.Public {

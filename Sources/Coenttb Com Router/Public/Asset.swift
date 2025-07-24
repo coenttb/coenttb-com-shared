@@ -9,7 +9,7 @@ import CasePaths
 import Dependencies
 @preconcurrency import Favicon
 import Foundation
-import Languages
+import Translating
 import URLRouting
 
 extension Route.Public {
