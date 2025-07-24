@@ -9,7 +9,7 @@ import Coenttb_Com_Router
 import Dependencies
 import Foundation
 import Identities
-import SwiftWeb
+import Coenttb_Web
 
 public struct Configuration: Sendable {
     public var website: Configuration.Website

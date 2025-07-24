@@ -10,7 +10,7 @@ import Coenttb_Newsletter
 import Coenttb_Syndication
 import Foundation
 import Identities
-import SwiftWeb
+import Coenttb_Web
 
 extension Route {
     @CasePathable
