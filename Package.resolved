@@ -169,7 +169,7 @@
       "location" : "https://github.com/coenttb/pointfree-html.git",
       "state" : {
         "branch" : "main",
-        "revision" : "0600634f64adb80324101d7577203cd31d6308d9"
+        "revision" : "0867cb15127d9db0fe54e53d5a47fb5438d84710"
       }
     },
     {
@@ -439,7 +439,7 @@
       "location" : "https://github.com/coenttb/swift-html-types",
       "state" : {
         "branch" : "main",
-        "revision" : "9b22f5bf4d6a591234c546902e2489076935f847"
+        "revision" : "984d22a98253c9b7d110b0c478fdee2c9bef5210"
       }
     },
     {
@@ -474,8 +474,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-log",
       "state" : {
-        "revision" : "3d8596ed08bd13520157f0355e35caed215ffbfa",
-        "version" : "1.6.3"
+        "revision" : "ce592ae52f982c847a4efc0dd881cc9eb32d29f2",
+        "version" : "1.6.4"
       }
     },
     {
@@ -565,7 +565,7 @@
       "location" : "https://github.com/coenttb/swift-password-validation",
       "state" : {
         "branch" : "main",
-        "revision" : "56b9887851439e0759cf936d5b723b6d2530283d"
+        "revision" : "350c846e1aca8cedaf06534c34ab4a3f5db75eea"
       }
     },
     {
@@ -618,8 +618,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-system.git",
       "state" : {
-        "revision" : "61e4ca4b81b9e09e2ec863b00c340eb13497dac6",
-        "version" : "1.5.0"
+        "revision" : "41daa93a5d229e1548ec86ab527ce4783ca84dda",
+        "version" : "1.6.0"
       }
     },
     {
@@ -637,7 +637,7 @@
       "location" : "https://github.com/coenttb/swift-translating.git",
       "state" : {
         "branch" : "main",
-        "revision" : "00e42232490bc595015fdf62d89b7ccdab4a917c"
+        "revision" : "bcdace8349ec3c02864deec406af01a891232d6a"
       }
     },
     {
