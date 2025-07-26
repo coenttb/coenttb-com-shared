@@ -39,12 +39,12 @@ extension Route.Website {
         public var body: some URLRouting.Router<Route.Website> {
             OneOf {
                 URLRouting.Route(.case(Route.Website.account)) {
-                    Path { String.account.slug().description }
+                    Path { String.account.slug() }
                     Route.Website.Account.Router()
                 }
 
                 URLRouting.Route(.case(Route.Website.blog)) {
-                    Path { String.blog.slug().description }
+                    Path { String.blog.slug() }
                     Blog.Route.View.Router()
                 }
 
@@ -52,40 +52,40 @@ extension Route.Website {
                     // Convenience route FIRST (more specific) - handles /newsletter/subscribe
                     URLRouting.Route(.case(Route.Website.newsletter(.subscribe(.request)))) {
                         Path {
-                            String.newsletter.slug().description
-                            String.subscribe.slug().description
+                            String.newsletter.slug()
+                            String.subscribe.slug()
                         }
                     }
 
                     URLRouting.Route(.case(Route.Website.newsletter)) {
-                        Path { String.newsletter.slug().description }
+                        Path { String.newsletter.slug() }
                         Newsletter.Route.View.Router()
                     }
 
                 }
 
                 URLRouting.Route(.case(Route.Website.choose_country_region)) {
-                    Path { String.choose_country_region.slug().description }
+                    Path { String.choose_country_region.slug() }
                 }
 
                 URLRouting.Route(.case(Route.Website.contact)) {
-                    Path { String.contact.slug().description }
+                    Path { String.contact.slug() }
                 }
 
                 URLRouting.Route(.case(Route.Website.privacy_statement)) {
-                    Path { String.privacyStatement.slug().description }
+                    Path { String.privacyStatement.slug() }
                 }
 
                 URLRouting.Route(.case(Route.Website.privacy_statement)) {
-                    Path { String.privacyPolicy.slug().description }
+                    Path { String.privacyPolicy.slug() }
                 }
 
                 URLRouting.Route(.case(Route.Website.terms_of_use)) {
-                    Path { String.terms_of_use.slug().description }
+                    Path { String.terms_of_use.slug() }
                 }
 
                 URLRouting.Route(.case(Route.Website.general_terms_and_conditions)) {
-                    Path { String.general_terms_and_conditions.slug().description }
+                    Path { String.general_terms_and_conditions.slug() }
                 }
 
                 URLRouting.Route(.case(Route.Website.identity)) {
@@ -97,3 +97,4 @@ extension Route.Website {
         }
     }
 }
+

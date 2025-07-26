@@ -14,7 +14,9 @@ import Testing
 
 @Suite(
     "Shared Tests",
-    .dependency(\.locale, .english)
+    .dependency(\.locale, .english),
+    .dependency(\.language, .english),
+    .dependency(\.languages, [.english, .dutch])
 )
 struct SharedTests {
     @Test
@@ -46,10 +48,7 @@ struct SharedTests {
             $0.language = .dutch
         } operation: {
             try #expect(router.match(path: "/nl/algemene-voorwaarden") == .page(.general_terms_and_conditions))
+            try #expect(router.match(path: "/nl/general-terms-and-conditions") == .page(.general_terms_and_conditions))
         }
     }
 }
-
-//router.match(path: "/nl/algemene-voorwaarden") →
-//    .website(Website<Route.Website>(language: Optional(Language.Language.dutch), page: Route.Website.general_terms_and_conditions))) == (.page(.general_terms_and_conditions)
-//    .website(Website<Route.Website>(language: nil, page: Route.Website.general_terms_and_conditions)))
