@@ -15,7 +15,6 @@ extension Target.Dependency {
 
 extension Target.Dependency {
     static var coenttbServer: Self { .product(name: "Coenttb Server", package: "coenttb-server") }
-    static var coenttbWeb: Self { .product(name: "Coenttb Web", package: "coenttb-web") }
     static var coenttbAuthentication: Self { .product(name: "Coenttb Authentication", package: "coenttb-authentication") }
     static var dependenciesMacros: Self { .product(name: "DependenciesMacros", package: "swift-dependencies") }
     static var dependenciesTestSupport: Self { .product(name: "DependenciesTestSupport", package: "swift-dependencies") }
@@ -45,14 +44,13 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/coenttb/coenttb-server.git", branch: "main"),
-        .package(url: "https://github.com/coenttb/coenttb-web.git", branch: "main"),
         .package(url: "https://github.com/coenttb/coenttb-authentication.git", branch: "main"),
         .package(url: "https://github.com/coenttb/coenttb-blog.git", branch: "main"),
         .package(url: "https://github.com/coenttb/coenttb-newsletter.git", branch: "main"),
         .package(url: "https://github.com/coenttb/coenttb-syndication.git", branch: "main"),
-        .package(url: "https://github.com/coenttb/swift-translating.git", branch: "main"),
+        .package(url: "https://github.com/coenttb/swift-translating.git", from: "0.0.1"),
         .package(url: "https://github.com/coenttb/swift-identities.git", branch: "main"),
-        .package(url: "https://github.com/pointfreeco/swift-dependencies.git", from: "1.1.5"),
+        .package(url: "https://github.com/pointfreeco/swift-dependencies.git", from: "1.9.2"),
         .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay", from: "1.4.3")
     ],
     targets: [
@@ -91,8 +89,4 @@ let package = Package(
     swiftLanguageModes: [.v6]
 )
 
-extension String {
-    var tests: Self {
-        "\(self) Tests"
-    }
-}
+extension String { var tests: Self { "\(self) Tests" } }
