@@ -22,9 +22,18 @@ public enum Route: Equatable, Sendable {
 
 extension Route {
     public static func page(
-        language: Language? = nil,
+        language: Language,
         _ page: Website
     ) -> Self {
+        return .website(.init(language: language, page: page))
+    }
+}
+
+extension Route {
+    public static func page(
+        _ page: Website
+    ) -> Self {
+        @Dependency(\.language) var language
         return .website(.init(language: language, page: page))
     }
 }

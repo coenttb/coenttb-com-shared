@@ -83,7 +83,8 @@ let package = Package(
             name: .coenttbShared.tests,
             dependencies: [
                 .coenttbShared,
-                .coenttbComRouter
+                .coenttbComRouter,
+                .dependenciesTestSupport
             ]
         )
     ],

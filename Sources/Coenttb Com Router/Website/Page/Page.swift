@@ -53,7 +53,7 @@ extension Route.Website {
                     URLRouting.Route(.case(Route.Website.newsletter(.subscribe(.request)))) {
                         Path {
                             String.newsletter.slug().description
-                            "subscribe"
+                            String.subscribe.slug().description
                         }
                     }
 
