@@ -1,5 +1,5 @@
 {
-  "originHash" : "da8e0419b7ce6308999174888bc109065aa4da44036cbf026cc2445fc724ea6d",
+  "originHash" : "a8861b2e73021bb5c9963123f5129975969a798844522ce51bebd3544f12885d",
   "pins" : [
     {
       "identity" : "async-http-client",
@@ -25,7 +25,7 @@
       "location" : "https://github.com/coenttb/coenttb-authentication.git",
       "state" : {
         "branch" : "main",
-        "revision" : "3334b126340d4a8bc6e82fa442f507c4b033e62b"
+        "revision" : "d674b61fdc256bcc4c3b5b76451db6604db77740"
       }
     },
     {
@@ -52,7 +52,7 @@
       "location" : "https://github.com/coenttb/coenttb-mailgun.git",
       "state" : {
         "branch" : "main",
-        "revision" : "d44625b8c72af42e18db6a292958be227fe458dc"
+        "revision" : "00590e58e1a0d912bca3ba2ec93d092e49d76fda"
       }
     },
     {
@@ -259,7 +259,7 @@
       "location" : "https://github.com/coenttb/swift-authentication",
       "state" : {
         "branch" : "main",
-        "revision" : "4a6d57fbb2e603fb485180600d26a13d865e3c1a"
+        "revision" : "35332ce1c2ddab3434e1b76c8aa95462897e91b4"
       }
     },
     {
