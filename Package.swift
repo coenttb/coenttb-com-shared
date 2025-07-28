@@ -15,7 +15,6 @@ extension Target.Dependency {
 
 extension Target.Dependency {
     static var coenttbServer: Self { .product(name: "Coenttb Server", package: "coenttb-server") }
-    static var coenttbAuthentication: Self { .product(name: "Coenttb Authentication", package: "coenttb-authentication") }
     static var dependenciesMacros: Self { .product(name: "DependenciesMacros", package: "swift-dependencies") }
     static var dependenciesTestSupport: Self { .product(name: "DependenciesTestSupport", package: "swift-dependencies") }
     static var issueReporting: Self { .product(name: "IssueReporting", package: "xctest-dynamic-overlay") }
@@ -43,7 +42,6 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/coenttb/coenttb-server.git", branch: "main"),
-        .package(url: "https://github.com/coenttb/coenttb-authentication.git", branch: "main"),
         .package(url: "https://github.com/coenttb/coenttb-blog.git", branch: "main"),
         .package(url: "https://github.com/coenttb/coenttb-newsletter.git", branch: "main"),
         .package(url: "https://github.com/coenttb/coenttb-syndication.git", branch: "main"),
@@ -57,7 +55,6 @@ let package = Package(
             dependencies: [
                 .coenttbServer,
                 .issueReporting,
-                .coenttbAuthentication,
                 .coenttbComRouter,
             ]
         ),
@@ -66,7 +63,6 @@ let package = Package(
             dependencies: [
                 .coenttbServer,
                 .issueReporting,
-                .coenttbAuthentication,
                 .coenttbSyndication,
                 .coenttbBlog,
                 .coenttbNewsletter,
