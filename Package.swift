@@ -19,7 +19,6 @@ extension Target.Dependency {
     static var dependenciesMacros: Self { .product(name: "DependenciesMacros", package: "swift-dependencies") }
     static var dependenciesTestSupport: Self { .product(name: "DependenciesTestSupport", package: "swift-dependencies") }
     static var issueReporting: Self { .product(name: "IssueReporting", package: "xctest-dynamic-overlay") }
-    static var identities: Self { .product(name: "Identities", package: "swift-identities") }
     static var translating: Self { .product(name: "Translating", package: "swift-translating") }
     static var coenttbSyndication: Self { .product(name: "Coenttb Syndication", package: "coenttb-syndication") }
     static var coenttbBlog: Self { .product(name: "Coenttb Blog", package: "coenttb-blog") }
@@ -49,7 +48,6 @@ let package = Package(
         .package(url: "https://github.com/coenttb/coenttb-newsletter.git", branch: "main"),
         .package(url: "https://github.com/coenttb/coenttb-syndication.git", branch: "main"),
         .package(url: "https://github.com/coenttb/swift-translating.git", from: "0.0.1"),
-        .package(url: "https://github.com/coenttb/swift-identities.git", branch: "main"),
         .package(url: "https://github.com/pointfreeco/swift-dependencies.git", from: "1.9.2"),
         .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay", from: "1.4.3")
     ],
@@ -61,7 +59,6 @@ let package = Package(
                 .issueReporting,
                 .coenttbAuthentication,
                 .coenttbComRouter,
-                .identities
             ]
         ),
         .target(
@@ -70,7 +67,6 @@ let package = Package(
                 .coenttbServer,
                 .issueReporting,
                 .coenttbAuthentication,
-                .identities,
                 .coenttbSyndication,
                 .coenttbBlog,
                 .coenttbNewsletter,
