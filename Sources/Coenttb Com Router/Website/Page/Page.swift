@@ -10,7 +10,6 @@ import Coenttb_Blog
 import Coenttb_Newsletter
 import Dependencies
 import Foundation
-import Identities
 import Translating
 import URLRouting
 
@@ -26,8 +25,6 @@ extension Route {
         case privacy_statement
         case terms_of_use
         case general_terms_and_conditions
-        case account(Route.Website.Account)
-        case identity(Identity.View)
     }
 }
 
@@ -38,11 +35,6 @@ extension Route.Website {
 
         public var body: some URLRouting.Router<Route.Website> {
             OneOf {
-                URLRouting.Route(.case(Route.Website.account)) {
-                    Path { String.account.slug() }
-                    Route.Website.Account.Router()
-                }
-
                 URLRouting.Route(.case(Route.Website.blog)) {
                     Path { String.blog.slug() }
                     Blog.Route.View.Router()
@@ -86,10 +78,6 @@ extension Route.Website {
 
                 URLRouting.Route(.case(Route.Website.general_terms_and_conditions)) {
                     Path { String.general_terms_and_conditions.slug() }
-                }
-
-                URLRouting.Route(.case(Route.Website.identity)) {
-                    Identity.View.Router()
                 }
 
                 URLRouting.Route(.case(Route.Website.home))
