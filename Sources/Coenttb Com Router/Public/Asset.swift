@@ -14,7 +14,7 @@ import URLRouting
 
 extension Route.Public {
     public enum Asset: Equatable, Sendable {
-        case favicon(FaviconRouter.Route)
+        case favicon(Route.Public.Asset.Favicon)
         case image(Route.Public.Asset.Image)
         case logo(Route.Public.Asset.Logo)
     }
@@ -26,7 +26,7 @@ extension Route.Public.Asset {
             OneOf {
                 URLRouting.Route(.case(Route.Public.Asset.favicon)) {
                     Path.favicon
-                    FaviconRouter()
+                    Route.Public.Asset.Favicon.Router()
                 }
 
                 URLRouting.Route(.case(Route.Public.Asset.image)) {
