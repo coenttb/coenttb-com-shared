@@ -18,6 +18,7 @@ extension Route {
         case robots
         case sitemap
         case rssXml
+        case favicon(Route.Public.Asset.Favicon)
     }
 }
 
@@ -44,6 +45,10 @@ extension Route.Public {
                 }
                 URLRouting.Route(.case(Route.Public.sitemap)) {
                     Path.sitemapXml
+                }
+                
+                URLRouting.Route(.case(Route.Public.favicon)) {
+                    Route.Public.Asset.Favicon.Router()
                 }
             }
         }
