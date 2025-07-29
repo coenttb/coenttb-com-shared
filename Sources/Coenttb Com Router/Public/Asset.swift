@@ -7,7 +7,6 @@
 
 import CasePaths
 import Dependencies
-@preconcurrency import Favicon
 import Foundation
 import Translating
 import URLRouting

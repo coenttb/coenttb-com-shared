@@ -7,7 +7,6 @@
 
 import CasePaths
 import Dependencies
-@preconcurrency import Favicon
 import Foundation
 import Translating
 import URLRouting
@@ -19,7 +18,6 @@ extension Route {
         case robots
         case sitemap
         case rssXml
-        case favicon(FaviconRouter.Route)
     }
 }
 
@@ -46,9 +44,6 @@ extension Route.Public {
                 }
                 URLRouting.Route(.case(Route.Public.sitemap)) {
                     Path.sitemapXml
-                }
-                URLRouting.Route(.case(Route.Public.favicon)) {
-                    FaviconRouter()
                 }
             }
         }
