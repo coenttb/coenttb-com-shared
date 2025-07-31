@@ -15,6 +15,7 @@ extension Target.Dependency {
 
 extension Target.Dependency {
     static var coenttbServer: Self { .product(name: "Coenttb Server", package: "coenttb-server") }
+    static var coenttbWeb: Self { .product(name: "Coenttb Web", package: "coenttb-web") }
     static var dependenciesMacros: Self { .product(name: "DependenciesMacros", package: "swift-dependencies") }
     static var dependenciesTestSupport: Self { .product(name: "DependenciesTestSupport", package: "swift-dependencies") }
     static var issueReporting: Self { .product(name: "IssueReporting", package: "xctest-dynamic-overlay") }
@@ -42,6 +43,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/coenttb/coenttb-server.git", branch: "main"),
+        .package(url: "https://github.com/coenttb/coenttb-web.git", branch: "main"),
         .package(url: "https://github.com/coenttb/coenttb-blog.git", branch: "main"),
         .package(url: "https://github.com/coenttb/coenttb-newsletter.git", branch: "main"),
         .package(url: "https://github.com/coenttb/coenttb-syndication.git", branch: "main"),
@@ -66,7 +68,8 @@ let package = Package(
                 .coenttbSyndication,
                 .coenttbBlog,
                 .coenttbNewsletter,
-                .translating
+                .translating,
+                .coenttbWeb
             ]
         ),
         .testTarget(

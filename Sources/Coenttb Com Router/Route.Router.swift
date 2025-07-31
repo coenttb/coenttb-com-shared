@@ -1,4 +1,5 @@
 import Coenttb_Server
+import Coenttb_Web
 import Dependencies
 import Foundation
 
@@ -13,7 +14,7 @@ extension Route {
         public var body: some URLRouting.Router<Route> {
             OneOf {
                 URLRouting.Route(.case(Route.website)) {
-                    Coenttb_Server.Website.Router.init(pageRouter: Route.Website.Router())
+                    Coenttb_Web.Website.Router.init(pageRouter: Route.Website.Router())
                 }
 
                 URLRouting.Route(.case(Route.public)) {
@@ -32,11 +33,11 @@ extension Route {
             self.url(for: .public(`public`)).relativePath
         }
 
-        public func href(for website: Coenttb_Server.Website<Website>) -> String {
+        public func href(for website: Coenttb_Web.Website<Website>) -> String {
             self.url(for: website).relativePath
         }
 
-        public func url(for page: Coenttb_Server.Website<Website>) -> URL {
+        public func url(for page: Coenttb_Web.Website<Website>) -> URL {
             return self.url(for: .website(page))
         }
 

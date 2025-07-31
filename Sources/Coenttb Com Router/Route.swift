@@ -7,13 +7,14 @@
 
 import CasePaths
 import Coenttb_Server
+import Coenttb_Web
 import Foundation
 import Translating
 
 @CasePathable
 @dynamicMemberLookup
 public enum Route: Equatable, Sendable {
-    case website(Coenttb_Server.Website<Website>)
+    case website(Coenttb_Web.Website<Website>)
     case `public`(Public)
     case webhook(Webhook)
     case api(API)
