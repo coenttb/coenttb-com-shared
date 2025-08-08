@@ -22,6 +22,7 @@ extension Route {
         case choose_country_region
         case contact
         case home
+        case projects
         case privacy_statement
         case terms_of_use
         case general_terms_and_conditions
@@ -62,6 +63,10 @@ extension Route.Website {
 
                 URLRouting.Route(.case(Route.Website.contact)) {
                     Path { String.contact.slug() }
+                }
+
+                URLRouting.Route(.case(Route.Website.projects)) {
+                    Path { "projects" }
                 }
 
                 URLRouting.Route(.case(Route.Website.privacy_statement)) {

@@ -82,7 +82,7 @@ extension Route.Public.Asset.Logo {
 }
 
 extension Route.Public.Asset {
-    public struct Image: Codable, Hashable, RawRepresentable, ExpressibleByStringLiteral, Sendable {
+    public struct Image: Codable, Hashable, RawRepresentable, ExpressibleByStringLiteral, ExpressibleByStringInterpolation, Sendable {
 
         public let rawValue: String
 
