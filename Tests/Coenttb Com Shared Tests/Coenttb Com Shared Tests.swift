@@ -30,20 +30,20 @@ struct SharedTests {
         try #expect(router.match(path: "en/newsletter/subscribe") == .page(.newsletter(.subscribe(.request))))
         try #expect(router.match(path: "en/newsletter/subscribe/request") == .page(.newsletter(.subscribe(.request))))
     }
-    
+
     @Test
     func testGeneralTerms() async throws {
         @Dependency(\.coenttb.website.router) var router
         try #expect(router.match(path: "en/newsletter/subscribe") == .page(.newsletter(.subscribe(.request))))
         try #expect(router.match(path: "en/newsletter/subscribe/request") == .page(.newsletter(.subscribe(.request))))
     }
-    
+
     @Test
     func testGeneralTermsDutch() async throws {
         @Dependency(\.coenttb.website.router) var router
-        
+
         try #expect(router.match(path: "en/general-terms-and-conditions") == .page(.general_terms_and_conditions))
-        
+
         try withDependencies {
             $0.language = .dutch
         } operation: {

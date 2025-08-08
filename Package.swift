@@ -57,7 +57,7 @@ let package = Package(
             dependencies: [
                 .coenttbServer,
                 .issueReporting,
-                .coenttbComRouter,
+                .coenttbComRouter
             ]
         ),
         .target(

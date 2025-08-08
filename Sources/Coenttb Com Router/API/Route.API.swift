@@ -7,9 +7,9 @@
 
 import CasePaths
 import Coenttb_Newsletter
+import Coenttb_Server
 import Coenttb_Syndication
 import Foundation
-import Coenttb_Web
 
 extension Route {
     @CasePathable

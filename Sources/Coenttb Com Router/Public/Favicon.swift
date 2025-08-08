@@ -88,5 +88,3 @@ extension Route.Public.Asset.Favicon {
         }
     }
 }
-
-

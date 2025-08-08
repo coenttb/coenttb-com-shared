@@ -6,9 +6,9 @@
 //
 
 import Coenttb_Com_Router
+import Coenttb_Server
 import Dependencies
 import Foundation
-import Coenttb_Web
 
 public struct Configuration: Sendable {
     public var website: Configuration.Website
@@ -34,8 +34,6 @@ extension Configuration {
         }
     }
 }
-
-
 
 extension Configuration: DependencyKey {
     public static var liveValue: Self {
@@ -75,4 +73,3 @@ extension DependencyValues {
         set { self[Configuration.self] = newValue }
     }
 }
-

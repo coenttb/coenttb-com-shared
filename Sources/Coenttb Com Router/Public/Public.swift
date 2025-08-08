@@ -46,7 +46,7 @@ extension Route.Public {
                 URLRouting.Route(.case(Route.Public.sitemap)) {
                     Path.sitemapXml
                 }
-                
+
                 URLRouting.Route(.case(Route.Public.favicon)) {
                     Route.Public.Asset.Favicon.Router()
                 }
